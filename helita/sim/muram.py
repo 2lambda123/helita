@@ -44,7 +44,7 @@ class MuramAtmos:
             self.dtype = '<' + dtype
         self.uni = Muram_units()
         self.read_header("%s/Header%s" % (fdir, template))
-        #self.read_atmos(fdir, template)
+        # self.read_atmos(fdir, template)
         # Snapshot number
         self.snap = int(template[1:])
         self.filename = ''
@@ -70,7 +70,7 @@ class MuramAtmos:
 
     def read_header(self, headerfile):
         tmp = np.loadtxt(headerfile)
-        #self.dims_orig = tmp[:3].astype("i")
+        # self.dims_orig = tmp[:3].astype("i")
         dims = tmp[:3].astype("i")
         deltas = tmp[3:6]
         # if len(tmp) == 10: # Old version of MURaM, deltas stored in km
@@ -82,10 +82,10 @@ class MuramAtmos:
         self.order = layout[0:3].astype(int)
         # if len(self.order) == 0:
         #    self.order = np.array([0,2,1]).astype(int)
-        #self.order = tmp[-3:].astype(int)
+        # self.order = tmp[-3:].astype(int)
         # dims = [1,2,0] 0=z,
-        #dims = np.array((self.dims_orig[self.order[2]],self.dims_orig[self.order[0]],self.dims_orig[self.order[1]]))
-        #deltas = np.array((deltas[self.order[2]],deltas[self.order[0]],deltas[self.order[1]])).astype('float32')
+        # dims = np.array((self.dims_orig[self.order[2]],self.dims_orig[self.order[0]],self.dims_orig[self.order[1]]))
+        # deltas = np.array((deltas[self.order[2]],deltas[self.order[0]],deltas[self.order[1]])).astype('float32')
         deltas = deltas[self.order]
         dims = dims[self.order]
 
@@ -330,7 +330,7 @@ class MuramAtmos:
                     cgsunits = 1.0
             else:
                 cgsunits = 1.0
-            #orderfiles = [self.order[2],self.order[0],self.order[1]]
+            # orderfiles = [self.order[2],self.order[0],self.order[1]]
 
             # self.order = [2,0,1]
             data = np.memmap(self.fdir+'/'+varname + self.siter, mode="r",

@@ -599,6 +599,7 @@ class Multi3dAtmos:
             self.vturb = np.memmap(infile, dtype=dtype, mode=mm, order="F",
                                    offset=offset, shape=(nx, ny, nz))
 
+
 class Multi3dMagnetic:
     """
     Class to read/write input magnetic field for Multi3D.
@@ -618,12 +619,13 @@ class Multi3dMagnetic:
     big_endian : bool, optional
         Endianness of output file. Default is False (little endian).
     """
+
     def __init__(self, infile, nx, ny, nz, mode='r', **kwargs):
         if os.path.isfile(infile) or (mode == "w+"):
             self.open_magnetic(infile, nx, ny, nz, mode=mode, **kwargs)
 
     def open_magnetic(self, infile, nx, ny, nz, mode="r", dp=False,
-                   big_endian=False,):
+                      big_endian=False,):
         """Reads/writes multi3d magnetic fields into parent object."""
         dtype = ["<", ">"][big_endian] + ["f4", "f8"][dp]
         ntot = nx * ny * nz * np.dtype(dtype).itemsize
@@ -631,6 +633,6 @@ class Multi3dMagnetic:
         self.Bx = np.memmap(infile, dtype=dtype, mode=mm, offset=0,
                             shape=(nx, ny, nz), order="F")
         self.By = np.memmap(infile, dtype=dtype, mode=mm, offset=ntot,
-                              shape=(nx, ny, nz), order="F")
+                            shape=(nx, ny, nz), order="F")
         self.Bz = np.memmap(infile, dtype=dtype, mode=mm, offset=ntot * 2,
                             shape=(nx, ny, nz), order="F")

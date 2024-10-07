@@ -33,12 +33,12 @@ class preft(object):
         self.fdir = fdir
 
         a = readsav(filename, python_dict=True)
-        #self.la = a['la']
+        # self.la = a['la']
         self.snap = snap
         la = a['la']
         l = a['la'][snap]
 
-        #self.zmax = (a['la'][0][3][:,2]).max()
+        # self.zmax = (a['la'][0][3][:,2]).max()
 
         self.extent = (0, (a['la'][0][3][:, 0]).max()-(a['la'][0][3][:, 0]).min(),
                        0, (a['la'][0][3][:, 1]).max()-(a['la'][0][3][:, 1]).min(),
@@ -68,19 +68,19 @@ class preft(object):
         self.y = l[3][:, 1].copy()
         self.y -= self.y.min()  # np.array([0.0])
         self.z = l[3][:, 2].copy()  # np.array([0.0])
-        #self.z = np.flip(self.rdobj.__getattr__('zm'))
+        # self.z = np.flip(self.rdobj.__getattr__('zm'))
         self.sel_units = sel_units
         self.verbose = verbose
-        #self.snap = None
+        # self.snap = None
         self.uni = PREFT_units()
 
-        #self.dx = np.array([1.0])
-        #self.dy = np.array([1.0])
-        #self.dz = np.copy(self.z)
+        # self.dx = np.array([1.0])
+        # self.dy = np.array([1.0])
+        # self.dz = np.copy(self.z)
         self.nt = [1]  # np.shape(self.z)[0]
         self.nz = np.shape(self.z)[0]
         # for it in range(0,self.nt):
-        #self.dz[it,:] = np.gradient(self.z[it,:])
+        # self.dz[it,:] = np.gradient(self.z[it,:])
         self.dx = np.gradient(self.x)
         self.dy = np.gradient(self.y)
         self.dz = np.gradient(self.z)
@@ -92,7 +92,7 @@ class preft(object):
         self.nx = np.shape(self.x)
         self.ny = np.shape(self.y)
 
-        #self.time =  self.rdobj.__getattr__('time')
+        # self.time =  self.rdobj.__getattr__('time')
 
         self.transunits = False
 
@@ -146,7 +146,7 @@ class preft(object):
             # print(varname)
             self.data = self.obj[varname][snap]*cgsunits
 
-        #self.rdobj.__getattr__(varname) * cgsunits
+        # self.rdobj.__getattr__(varname) * cgsunits
         except:
 
             self.data = load_quantities(self, var, PLASMA_QUANT='', CYCL_RES='',
@@ -170,7 +170,7 @@ class preft(object):
             for ii in self.varn:
                 print('use ', ii, ' for ', self.varn[ii])
             print(self.description['ALL'])
-            #print('\n radyn obj is self.rdobj, self.rdobj.var_info is as follows')
+            # print('\n radyn obj is self.rdobj, self.rdobj.var_info is as follows')
             # print(self.rdobj.var_info)
 
             return None
@@ -239,10 +239,10 @@ class preft(object):
             self.snap = snap
             self.transunits = False
 
-        #var = self.get_var(varname)
+        # var = self.get_var(varname)
 
         # What does this do?
-        #self.trans2commaxes(var, **kwargs)
+        # self.trans2commaxes(var, **kwargs)
 
         if not hasattr(self, 'trans_loop_width'):
             self.trans_loop_width = 1.0
@@ -258,7 +258,7 @@ class preft(object):
                 self.trans_sparse = value
 
         # GSK -- smax was changed 12th March 2021. See comment in trans2commaxes
-        ##smax = s.max()
+        # smax = s.max()
 
         shape = (ceil(self.extent[1]/self.trans_dx),
                  ceil(self.extent[3]/self.trans_dy),
@@ -266,7 +266,7 @@ class preft(object):
 
         # In the PREFT model in the corona, successive grid points may be several pixels away from each other.
         # In this case, need to refine loop.
-        #do_expscale = False
+        # do_expscale = False
         # for key, value in kwargs.items():
         #    if key == 'unscale':
         #        do_expscale = value
@@ -278,7 +278,7 @@ class preft(object):
         #        ss, var= refine(s, var,factor=self.gridfactor)
         # else:
         #    ss = s
-        #var_copy = var.copy()
+        # var_copy = var.copy()
 
         x_loop = self.obj['x'][self.snap]
         y_loop = self.obj['y'][self.snap]
@@ -379,14 +379,14 @@ class preft(object):
 
             # Semicircular loop
             # s = self.obj['s'] #np.copy(self.zorig)
-            #good = (s >=0.0)
-            #s = s[good]
+            # good = (s >=0.0)
+            # s = s[good]
 
-            #x = self.x
-            #y = self.y
-            #z = self.z
+            # x = self.x
+            # y = self.y
+            # z = self.z
 
-            #shape = (ceil(x.max()/self.trans_dx),ceil(y.max()/self.trans_dy), ceil(self.zmax/self.trans_dz))
+            # shape = (ceil(x.max()/self.trans_dx),ceil(y.max()/self.trans_dy), ceil(self.zmax/self.trans_dz))
 
             # In the RADYN model in the corona, successive grid points may be several pixels away from each other.
             # In this case, need to refine loop.

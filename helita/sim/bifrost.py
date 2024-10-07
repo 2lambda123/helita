@@ -1330,14 +1330,14 @@ class BifrostData():
         -------
         None.
         """
-        from .multi3d import Multi3dAtmos
-        from .multi3d import Multi3dMagnetic
+        from .multi3d import Multi3dAtmos, Multi3dMagnetic
+
         # unit conversion to cgs and km/s
         ul = self.params['u_l'][self.snapInd]   # to cm
         ur = self.params['u_r'][self.snapInd]   # to g/cm^3  (for ne_rt_table)
         ut = self.params['u_t'][self.snapInd]   # to seconds
         uv = ul / ut / 1e5        # to km/s
-        ub = self.params['u_b'][self.snapInd] # to G
+        ub = self.params['u_b'][self.snapInd]  # to G
         ue = self.params['u_ee'][self.snapInd]  # to erg/g
         nh = None
         if self.verbose:
@@ -1390,7 +1390,7 @@ class BifrostData():
             # Change sign of Bz (because of height scale) and By
             # (to make right-handed system)
             Bx = Bx * ub
-            By = -By * ub # [M.Sz] Should By be inverted too  (Bz points downwards)?
+            By = -By * ub  # [M.Sz] Should By be inverted too  (Bz points downwards)?
             Bz = -Bz * ub
             fout3 = Multi3dMagnetic('magnetic.dat', nx, ny, nz, mode='w+')
             fout3.Bx[:] = Bx
@@ -2634,8 +2634,8 @@ class Opatab:
         Interpolates the opa table to same format as tg table.
         '''
         self.load_opa1d_table()
-        #rhoeetab = Rhoeetab(fdir=self.fdir)
-        #tgTable = rhoeetab.get_table('tg')
+        # rhoeetab = Rhoeetab(fdir=self.fdir)
+        # tgTable = rhoeetab.get_table('tg')
         tgTable = np.linspace(self.teinit, self.teinit + self.dte*self.nte, self.nte)
         # translate to table coordinates
         x = ((tgTable) - self.teinit) / self.dte
@@ -2655,12 +2655,12 @@ class Opatab:
         self.tg_tab_interp()
         arr = (self.ionh) * self.hopac() + rhe * ((1 - self.ionhei - (1-self.ionhei-self.ionhe)) *
                                                   self.heiopac() + (self.ionhei) * self.heiiopac())
-        #ion_h = self.ionh
-        #ion_he = self.ionhe
-        #ion_hei = self.ionhei
-        #ohi = self.hopac()
-        #ohei = self.heiopac()
-        #oheii = self.heiiopac()
+        # ion_h = self.ionh
+        # ion_he = self.ionhe
+        # ion_hei = self.ionhei
+        # ohi = self.hopac()
+        # ohei = self.heiopac()
+        # oheii = self.heiiopac()
         # arr = (1 - ion_h) * ohi + rhe * ((1 - ion_he - ion_hei) *
         #                                 ohei + ion_he * oheii)
         arr[arr < 0] = 0

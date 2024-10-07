@@ -268,12 +268,12 @@ def manage_memmaps(MEMORYATTR, kw_mem=['dtype', 'order', 'offset', 'shape']):
                         filekey, mid = next(iter(memory['order'].keys()))
                         # commented lines for debugging 'too many files' crash; will be removed in the future:
                         # x = memory[filekey]['memdicts'][mid]['value']  # this is the memmap
-                        #print('there are {} references to the map.'.format(sys.getrefcount(x)))
+                        # print('there are {} references to the map.'.format(sys.getrefcount(x)))
                         memdata = memory['data']
                         memdict = memdata[filekey]['memdicts'][mid]
                         del memdict['value']         # this is the memmap
-                        #print('there are {} references to the map (after deleting dict)'.format(sys.getrefcount(x)))
-                        #print('referrers are: ', referrers(x))
+                        # print('there are {} references to the map (after deleting dict)'.format(sys.getrefcount(x)))
+                        # print('referrers are: ', referrers(x))
                         del memory['order'][(filekey, mid)]
                         memory['len'] -= 1
             # return f(*args, **kwargs)

@@ -78,11 +78,11 @@ def psf_kernel(a, b=0.1, n=100, mu=1., phi=0., norm=True, threshold=1e-2,
         for j in range(n - 1):
             # mu acts on the x axis, convention of phi=0 is along x axis
             r = np.sqrt(mu * (i - n / 2 + 1)**2 + (j - n / 2 + 1)**2)
-            #kernel[i,j] = psf_diffr(r) + psf_atm(r,a,b)
+            # kernel[i,j] = psf_diffr(r) + psf_atm(r,a,b)
             # new way, separate both components and then convolve them
             kernel_atm[i, j] = psf_atm(r, a, b)
             kernel_dif[i, j] = psf_diffr(r)
-    #kernel = ndimage.convolve(kernel_atm,kernel_dif)
+    # kernel = ndimage.convolve(kernel_atm,kernel_dif)
     if norm:
         kernel /= np.sum(kernel)
         kernel_atm /= np.sum(kernel_atm)

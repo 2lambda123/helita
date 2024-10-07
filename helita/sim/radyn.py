@@ -217,7 +217,7 @@ class radyn(object):
         s = s[good]
         var = var[good]
         # GSK -- smax was changed 12th March 2021. See comment in trans2commaxes
-        #smax = self.rdobj.cdf['zll'][self.snap]
+        # smax = self.rdobj.cdf['zll'][self.snap]
         smax = np.max(self.rdobj.__getattr__('zm'))
         R = 2*smax/np.pi
 
@@ -248,7 +248,7 @@ class radyn(object):
         dA.append(dA[-1])
         dA = np.array(dA)
         dA = 0.5*(dA[1:]+dA[0:-1])
-        #dA = R*dA*(loop_width*dx)
+        # dA = R*dA*(loop_width*dx)
         dA = 0.5*dA*((R+0.5*self.trans_loop_width*self.trans_dx)**2-(R-0.5*self.trans_loop_width*self.trans_dx)**2)
 
         # Componnets of velocity in the x and z directions
@@ -308,7 +308,7 @@ class radyn(object):
             s = s[good]
             # JMS -- Sometimes zll is slightly different to the max of zm which causes problems on the assumption of a 1/4 loop.
             # max(zm) fix the problem
-            #smax = self.rdobj.cdf['zll'][self.snap]
+            # smax = self.rdobj.cdf['zll'][self.snap]
             smax = np.max(self.rdobj.__getattr__('zm'))
             R = 2*smax/np.pi
             x = np.cos(s/R)*R

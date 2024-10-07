@@ -250,7 +250,7 @@ class Laresav:
 
         var = self.get_var(varname, snap=snap).copy()
 
-        #var = transpose(var,(X,X,X))
+        # var = transpose(var,(X,X,X))
         # also velocities.
 
         return var

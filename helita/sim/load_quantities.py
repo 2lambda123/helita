@@ -950,7 +950,7 @@ def get_ponderomotive(obj, quant, POND_QUANT=None, **kwargs):
     ubz = obj.get_var('uxc')*byc - obj.get_var('uyc')*bxc
 
     xl, yl, zl = calc_field_lines(obj.x[::2], obj.y, obj.z[::2], bxc[::2, :, ::2], byc[::2, :, ::2], bzc[::2, :, ::2], niter=501)
-    #S = calc_lenghth_lines(xl, yl, zl)
+    # S = calc_lenghth_lines(xl, yl, zl)
     ixc = obj.get_var('ixc')
     iyc = obj.get_var('iyc')
     izc = obj.get_var('izc')
@@ -1202,8 +1202,8 @@ def get_gyrof(obj, quant, GYROF_QUANT=None, **kwargs):
 
 
 # default
-#_KAPPA_QUANT = ['kappa' + elem for elem in ELEMLIST]
-#_KAPPA_QUANT = ['kappanorm_', 'kappae'] + _KAPPA_QUANT
+# _KAPPA_QUANT = ['kappa' + elem for elem in ELEMLIST]
+# _KAPPA_QUANT = ['kappanorm_', 'kappae'] + _KAPPA_QUANT
 # I suspect that ^^^ should be kappanorm_ + elem for elem in ELEMLIST,
 # but I don't know what kappanorm is supposed to mean, so I'm not going to change it now. -SE June 28 2021
 _KAPPA_QUANT0 = ('KAPPA_QUANT')

@@ -39,8 +39,8 @@ class Mah:
         self.read_dat5()
         self.read_dat6()
 
-        #self.x = dd.input_ini['xpos']
-        #self.z = dd.input_ini['zpos']
+        # self.x = dd.input_ini['xpos']
+        # self.z = dd.input_ini['zpos']
         self.z = self.input_ini['spos']
         if self.sel_units == 'cgs':
             #    self.x *= self.uni.uni['l']
@@ -638,7 +638,7 @@ class Mah:
 
         var = self.get_var(varname, snap=snap).copy()
 
-        #var = transpose(var,(X,X,X))
+        # var = transpose(var,(X,X,X))
         # also velocities.
 
         return var

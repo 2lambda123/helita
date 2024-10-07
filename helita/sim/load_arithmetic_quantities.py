@@ -554,8 +554,8 @@ def get_gradients_vect(obj, quant):
         q = q[:-1]  # q without axis
         y, z = YZ_FROM_X[x]
         # interpolation notes:
-        ## qz is at (0, 0, -0.5); dqzdydn is at (0, -0.5, -0.5)
-        ## qy is at (0, -0.5, 0); dqydzdn is at (0, -0.5, -0.5)
+        # qz is at (0, 0, -0.5); dqzdydn is at (0, -0.5, -0.5)
+        # qy is at (0, -0.5, 0); dqydzdn is at (0, -0.5, -0.5)
         dqz_dydn = obj.get_var('d' + q + z + 'd' + y + 'dn')
         dqy_dzdn = obj.get_var('d' + q + y + 'd' + z + 'dn')
         return dqz_dydn - dqy_dzdn

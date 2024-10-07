@@ -503,7 +503,7 @@ class EbysusData(BifrostData, fluid_tools.Multifluid):
                 self.cstagger_exists = True   # we can use cstagger methods!
             else:
                 self.cstagger_exists = False
-                #cstagger.init_stagger_mz1(self.nz, self.dx, self.dy, self.z.astype(rdt))
+                # cstagger.init_stagger_mz1(self.nz, self.dx, self.dy, self.z.astype(rdt))
                 # self.cstagger_exists = True  # we must avoid using cstagger methods.
         else:
             self.cstagger_exists = True
@@ -1026,7 +1026,7 @@ class EbysusData(BifrostData, fluid_tools.Multifluid):
         # check if we are reading .scr (snap < 0), snap0 (snap == 0), or "normal" snap (snap > 1)
         if currSnap > 0:      # reading "normal" snap
             _reading_scr = False
-            #currStr = currStr
+            # currStr = currStr
         elif currSnap == 0:   # reading snap0
             _reading_scr = False
             currStr = ''
@@ -1488,7 +1488,7 @@ class EbysusData(BifrostData, fluid_tools.Multifluid):
         # globals
         if len(GLOBAL_VARS) > 0:
             # solution without allowing for newlines:
-            #lines.append(' | '.join([f"{display_names[var]} = {fmtv(np.mean(getv(var)))}" for var in GLOBAL_VARS]))
+            # lines.append(' | '.join([f"{display_names[var]} = {fmtv(np.mean(getv(var)))}" for var in GLOBAL_VARS]))
             # solution which converts any '' to newline:
             i = 0
             gvarline = []
