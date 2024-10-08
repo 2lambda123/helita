@@ -371,7 +371,7 @@ def get_efield_var(obj, var, EFIELD_QUANT=None):
         if obj.match_aux() and (not obj.get_param('do_ohm_ecol', default=False)):
             return obj.zero_at_mesh_edge(x)
         # interpolation:
-        ## efx is at (0, -1/2, -1/2)
+        # efx is at (0, -1/2, -1/2)
         # rijx is at (-1/2, 0, 0)    (same as ux)
         # --> to align with efx, we shift rijx by xup ydn zdn
         interp = x+'up'+y+'dn'+z+'dn'
@@ -381,8 +381,8 @@ def get_efield_var(obj, var, EFIELD_QUANT=None):
 
     elif base == 'efneqe':   # ne qe   (aligned with efx)
         # interpolation:
-        ## efx is at (0, -1/2, -1/2)
-        ## ne is at (0, 0, 0)
+        # efx is at (0, -1/2, -1/2)
+        # ne is at (0, 0, 0)
         # to align with efx, we shift ne by ydn zdn
         interp = y+'dn'+z+'dn'
         result = obj.get_var('nq'+interp, iS=-1)   # [simu. charge density units]  (Note: 'nq' < 0 for electrons)
@@ -565,7 +565,7 @@ def get_electron_var(obj, var, ELECTRON_QUANT=None):
         x = var[-1]  # axis; 'x', 'y', or 'z'.
         # get component due to velocities:
         # r is in center of cells, while u is on faces, so we need to interpolate.
-        ## r is at (0, 0, 0); ux is at (-0.5, 0, 0)
+        # r is at (0, 0, 0); ux is at (-0.5, 0, 0)
         # ---> to align with ux, we shift r by xdn
         interp = x+'dn'
         output = obj.zero_at_mesh_face(x)
@@ -583,13 +583,13 @@ def get_electron_var(obj, var, ELECTRON_QUANT=None):
         x = var[-1]  # axis; 'x', 'y', or 'z'.
         # get component due to current:
         # i is on edges of cells, while u is on faces, so we need to interpolate.
-        ## ix is at (0, -0.5, -0.5); ux is at (-0.5, 0, 0)
+        # ix is at (0, -0.5, -0.5); ux is at (-0.5, 0, 0)
         # ---> to align with ux, we shift ix by xdn yup zup
         y, z = tuple(set(AXES) - set((x)))
         interpj = x+'dn' + y+'up' + z+'up'
         jx = obj.get_var('j'+x + interpj)   # [simu current per area units]
         # r (nq) is in center of cells, while u is on faces, so we need to interpolate.
-        ## r is at (0, 0, 0); ux is at (-0.5, 0, 0)
+        # r is at (0, 0, 0); ux is at (-0.5, 0, 0)
         # ---> to align with ux, we shift r by xdn
         interpn = x+'dn'
         nqe = obj.get_var('nq' + interpn, iS=-1)     # [simu charge density units]
@@ -602,14 +602,14 @@ def get_electron_var(obj, var, ELECTRON_QUANT=None):
             x = var[-1]  # axis; 'x', 'y', or 'z'.
             # get component due to current:
             # i is on edges of cells, while u is on faces, so we need to interpolate.
-            ## ix is at (0, -0.5, -0.5); ux is at (-0.5, 0, 0)
+            # ix is at (0, -0.5, -0.5); ux is at (-0.5, 0, 0)
             # ---> to align with ux, we shift ix by xdn yup zup
             y, z = tuple(set(AXES) - set((x)))
             interp = x+'dn' + y+'up' + z+'up'
             output = obj.get_var('j'+x + interp)   # [simu current per area units]
             # get component due to velocities:
             # r is in center of cells, while u is on faces, so we need to interpolate.
-            ## r is at (0, 0, 0); ux is at (-0.5, 0, 0)
+            # r is at (0, 0, 0); ux is at (-0.5, 0, 0)
             # ---> to align with ux, we shift r by xdn
             interp = x+'dn'
             nqe = obj.zero_at_mesh_face(x)  # charge density of electrons.
@@ -1639,7 +1639,7 @@ def get_mf_cross(obj, var, CROSTAB_QUANT=None):
         return tg
     else:
         # look up cross table and get cross section
-        #crossunits = 2.8e-17
+        # crossunits = 2.8e-17
         try:
             crossobj = obj.get_cross_sect(ifluid=obj.ifluid, jfluid=obj.jfluid)
         except ValueError:  # we failed to get the cross section.

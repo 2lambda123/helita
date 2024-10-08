@@ -822,9 +822,9 @@ class PlutoData(object):
     def __init__(self, rootname, snap, fdir='./', datatype='dbl',
                  verbose=True, sel_units='cgs', typemodel='Kostas', *args, **kwargs):
 
-        #super(PlutoData, self).__init__(it, w_dir=fdir, datatype=datatype, *args, **kwargs)
+        # super(PlutoData, self).__init__(it, w_dir=fdir, datatype=datatype, *args, **kwargs)
 
-        #self.rootname = rootname
+        # self.rootname = rootname
         self.fdir = fdir
         self.snap = snap
         self.sel_units = sel_units
@@ -1100,10 +1100,10 @@ class PlutoData(object):
 
         if self.transunits == False:
             self.transunits = True
-            #self.z = self.z[::-1].copy()
+            # self.z = self.z[::-1].copy()
             if self.typemodel == 'Paolo':
                 # nznew=int(self.z.shape[0]/2)
-                #self.z = self.z[0:nznew-1]
+                # self.z = self.z[0:nznew-1]
                 self.z -= self.z[0]
                 self.nz = np.size(self.z)
             self.dz1d = np.gradient(self.z)
@@ -1129,7 +1129,7 @@ class PlutoData(object):
                 self.ny = np.size(self.y)
                 self.nz = np.size(self.z)
 
-            #self.dz1d = self.dz1d[::-1].copy()
+            # self.dz1d = self.dz1d[::-1].copy()
 
     def trans2noncommaxes(self):
 
@@ -1137,7 +1137,7 @@ class PlutoData(object):
             self.transunits = False
             self.z = self.zorig
             self.dz1d = np.gradient(self.z)
-            #self.dz1d = self.dz1d[::-1].copy()
+            # self.dz1d = self.dz1d[::-1].copy()
             self.nz = np.size(self.z)
 
 

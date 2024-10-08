@@ -127,7 +127,7 @@ def spec3d_conv(spec, wave, conv_type='IRIS', ww=None, wpts=200,
     # Spatial convolution
     dstep = pix2asec
     dsigma = cp[conv_type][0] / (dstep * 2 * math.sqrt(2 * math.log(2)))
-    #nspec = ndimage.gaussian_filter(nspec,[dsigma,dsigma,wsigma])
+    # nspec = ndimage.gaussian_filter(nspec,[dsigma,dsigma,wsigma])
     for w in range(nwave):
         spec[:, :, w] = ndimage.gaussian_filter(spec[:, :, w], dsigma)
     # Spatial pixelisation

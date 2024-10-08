@@ -559,7 +559,7 @@ def get_coll_type(obj, iSL=None, jSL=None, **kw__fluids):
         coll_keys = obj.coll_keys[(iSL[0], jSL[0])]   # note: obj.coll_keys only knows about species.
     except KeyError:
         key_errmsg_start = 'no coll_keys found for (iS, jS) = ({}, {})!'.format(iSL[0], jSL[0])
-    if (len(key_errmsg_start)==0):
+    if (len(key_errmsg_start) == 0):
         if (icharge != 0) and (jcharge != 0):
             if 'CL' in coll_keys:
                 return 'CL'
@@ -584,8 +584,8 @@ def get_coll_type(obj, iSL=None, jSL=None, **kw__fluids):
                 key_errmsg_start = "did not find either coll key 'EL' or 'MX' for collisions involving >=1 neutral fluid."
     assert (len(key_errmsg_start) != 0), "code above should handle all cases where there is no error..."
     key_errmsg = key_errmsg_start + '\n' + \
-            'Most common cause: mistakes or missing keys in COLL KEYS in mf_param_file. ' +\
-            'Alternative option: set obj.match_type = helita.sim.ebysus.MATCH_AUX to skip collisions with missing coll keys.'
+        'Most common cause: mistakes or missing keys in COLL KEYS in mf_param_file. ' +\
+        'Alternative option: set obj.match_type = helita.sim.ebysus.MATCH_AUX to skip collisions with missing coll keys.'
 
 
 ''' --------------------- MultiFluid class --------------------- '''
